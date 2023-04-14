@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
-import insertData = require('../services/insertData.service');
+import insertData = require('../../services/insertData.service');
 
 type basicDataType = {
     firstName: string,
@@ -18,14 +18,12 @@ export const formController = (req: Request, res: Response) => {
         // const {first_name, last_name,email,phone_number,state,city,address,gender}:basicDataType = req.body
         let basicDataObject: string[] = []
 
-
-
         for (let x in req.body) {
             basicDataObject.push(`${req.body[x]}`)
         }
 
-        const colNameArr = ["first_name", "last_name", "email", "phone_number", "state", "city", "address", "gender", "zipcode"]
-        insertData("new_table", colNameArr, basicDataObject)
+        const colNameArr = ["first_name", "last_name", "email", "phone_number", "state", "city", "address", "gender", "zipcode","relationship_status"]
+        insertData("basic_info", colNameArr, basicDataObject)
         res.end()
     }
     catch (err: any) {

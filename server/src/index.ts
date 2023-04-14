@@ -15,8 +15,6 @@ app.use(function(req, res, next) {
     next();
   });
 
-
-
 import candidateRoutes from './routes/candidate.routes'
 app.use('/',candidateRoutes)
 

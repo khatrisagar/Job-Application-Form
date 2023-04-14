@@ -1,13 +1,5 @@
-.basic-info-wrapper{
-    border: 1px solid var(--black);
-    width: 50%;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--bg-gradient);
-    border: 2px solid black;
-    border-radius: 5px;
-    padding: 2rem;
+.basic-info-wrapper>h1{
+    text-align: center;
 }
 
 .basic-info-table{
@@ -25,7 +17,7 @@
     display: flex;
     flex-direction: column;
 }
-input[type="text"]{
+input[type="text"], select{
     padding: 5px;
     border: 1px solid black;
 }

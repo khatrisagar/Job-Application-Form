@@ -33,7 +33,17 @@ body{
 
 .job-application-form-wrapper{
     min-width: 100vh;
-    margin-top: 40px;
+    margin-top: 40px !important;
+    border: 1px solid var(--black);
+    width: 50%;
+    margin-inline: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-gradient);
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 2rem;
 }
 
 #wizard-btns{
