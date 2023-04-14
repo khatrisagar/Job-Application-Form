@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --black: #000000;
+    --white: #ffffff;
+    --bg-gradient: #57bcff;
+}
+
+.flex{
+    display: flex;
+}
+.flex-col{
+    flex-direction: column;
+}
+.flex-row{
+    flex-direction: row;
+}
+.item-center{
+    align-items: center;
+}
+.content-center{
+    justify-content: center;
+}
+
+body{
+    font-family: 'Kanit', sans-serif;
+}
+
+.job-application-form-wrapper{
+    min-width: 100vh;
+    margin-top: 40px;
+}
+
+#wizard-btns{
+    cursor: pointer;
+    width: 100px;
+    padding: 10px 10px;
+    color: var(--white);
+    background-color: var(--black);
+    border: none;
+    border-radius: 5px;
+}
