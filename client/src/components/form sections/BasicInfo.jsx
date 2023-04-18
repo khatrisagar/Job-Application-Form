@@ -1,11 +1,9 @@
-// import { useState } from 'react'
-import { toBeChecked } from '@testing-library/jest-dom/dist/matchers'
-import '../styles/basicinfo.css'
+import '../../styles/basicinfo.css'
 
 
 const BasicInfo = (props) => {
     const { formData } = props
-    console.log("form data", formData)
+    // console.log("form data", formData)
     return (
         <section className="basic-info-section">
             <div className="basic-info-wrapper flex flex-col">
@@ -18,7 +16,6 @@ const BasicInfo = (props) => {
                                 <input
                                     type="text"
                                     name='first_name'
-                                    // value={formData.first_name}
                                     defaultValue={formData.first_name}
                                 />
                             </td>
@@ -101,17 +98,17 @@ const BasicInfo = (props) => {
                                 <label htmlFor="Gender">Gender</label>
 
                                 <span>
-                                    <input type="radio" name="gender" value="male" id='male' defaultChecked={formData.gender == 'male'} />
+                                    <input type="radio" name="gender" value="male" id='male' defaultChecked={formData.gender === 'male'} />
                                     <label htmlFor="male">Male</label>
                                 </span>
 
                                 <span>
-                                    <input type="radio" name="gender" value="female" id='female' defaultChecked={formData.gender == 'female'} />
+                                    <input type="radio" name="gender" value="female" id='female' defaultChecked={formData.gender === 'female'} />
                                     <label htmlFor="female">Female</label>
                                 </span>
 
                                 <span>
-                                    <input type="radio" name="gender" value="other" id='other' defaultChecked={formData.gender == 'other'} />
+                                    <input type="radio" name="gender" value="other" id='other' defaultChecked={formData.gender === 'other'} />
                                     <label htmlFor="other">Other</label>
                                 </span>
                             </td>

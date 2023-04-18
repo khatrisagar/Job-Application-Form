@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import BasicInfo from '../components/BasicInfo'
-import EducationInfo from '../components/EducationInfo'
+import { useState } from 'react'
+import BasicInfo from '../components/form sections/BasicInfo'
+import EducationInfo from '../components/form sections/EducationInfo'
 import '../styles/jobapplication.css'
 
 
@@ -20,17 +20,17 @@ const JobApplication = () => {
         relation_status: '',
         gender:'',
         course_name: '',
+        university_name: '',
+        passing_year: '',
+        score:''
     })
         
-    // useEffect(()=>{
-        
-    // },[formData])
 
 
     const handleChange = (event) =>{
-        // event.preventDefault()
-        console.log("called")
+        event.preventDefault()
         setFormData({...formData, [event.target.name]: event.target.value})
+        console.log("called", formData)
     }
 
 
@@ -39,35 +39,45 @@ const JobApplication = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault()
-        let elementsVal = event.target.elements
-        
         let basicInfoObj = {
-            first_name: elementsVal.first_name.value,
-            last_name: elementsVal.last_name.value,
-            email: elementsVal.email.value,
-            phone_number: elementsVal.phone_number.value,
-            state: elementsVal.state.value,
-            city: elementsVal.city.value,
-            address: elementsVal.address.value,
-            gender: elementsVal.gender.value,
-            zipcode: elementsVal.zipcode.value,
-            relationship_status: elementsVal.relationship_status.value
+            first_name: formData.first_name,
+            last_name: formData.last_name,
+            email: formData.email,
+            phone_number: formData.phone_number,
+            state: formData.state,
+            city: formData.city,
+            address: formData.address,
+            gender: formData.gender,
+            zipcode: formData.zipcode,
+            relationship_status: formData.relationship_status
         }
 
-        fetch(`http://localhost:8080/`, {
-            method: "post",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(basicInfoObj),
-        })
+        let educationInfoObj= {
+            course_name : formData.course_name,
+            university_name: formData.university_name,
+            passing_year: formData.passing_year,
+            score: formData.score
+        }
+
+        console.log("basicInfoObj",basicInfoObj)
+        console.log("educationInfoObj",educationInfoObj)
+        // fetch(`http://localhost:8"080/`, {
+        //     method: "post",
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(basicInfoObj),
+        // })
     }
 
     return (
         <div className='job-application-form-wrapper'>
             <form action="/test" method='post' onSubmit={handleSubmit} onChange={handleChange}>
                 {currentPage === 1 &&
+                    <>
                     <BasicInfo formData={formData}/>
+                    <input type="submit" value="submit" className='basic-submit' />
+                    </>
                 }
                 {currentPage === 2 &&
                     <EducationInfo formData={formData}/>
@@ -83,10 +93,15 @@ const JobApplication = () => {
                             <td className='btn-td'>
                                 <input type="button" value="Next" id='wizard-btns' onClick={next} className='basic-next' />
                             </td>
+                        {currentPage === 3 &&
+                            <td className='btn-td'>
+                                <input type="submit" value="submit" className='basic-submit' /> 
+                            </td>
+                        }
                         </tr>
                     </tbody>
                 </table>
-                {/* <input type="submit" value="submit" /> */}
+
             </form>
         </div>
     )
